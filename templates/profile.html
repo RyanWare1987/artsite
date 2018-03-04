@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Success!</h2>
+    <p>You are logged in as {{ user.email }} </p>
+    
+    <h2>To edit your profile:</h2>
+    <div>
+            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
+    </div>
+
+    <p>Your car is a {{ user.car }}</p>
+    <p>Placeholder text</p> 
+    <p>Placeholder text</p>
+{% endblock %}
