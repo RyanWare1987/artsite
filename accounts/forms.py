@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import User
+from django.contrib.auth.models import User
+from accounts.models import Profile
 from django.core.exceptions import ValidationError
 
 
@@ -17,9 +18,7 @@ class UserRegistrationForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['email', 'password1', 'password2']
-        #fields = ['email', 'password1', 'password2', 'stripe_id']
-        exclude = ['username']
+        fields = ['username', 'email', 'password1', 'password2']
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
@@ -44,14 +43,25 @@ class UserRegistrationForm(UserCreationForm):
 
 
 class UserLoginForm(forms.Form):
-    email = forms.EmailField()
+    username = forms.CharField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 
-class UserEditForm(forms.Form):
-    #Edit profile details
+class UserEditForm(forms.ModelForm):
+    # Edit user details - this is for the User model, which contains
+    # sensitive info such as email, username, password etc
     class Meta:
-        Model = User
+        model = User
+        fields = (
+            'email',
+        )
+
+class ProfileEditForm(forms.ModelForm):
+    # Edit profile details - this is for the additional Profile data
+    # Which does not involve sensitive information like emails and pw
+    class Meta:
+        model = Profile
         fields = (
             'car',
+            'colour',
         )

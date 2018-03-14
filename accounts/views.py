@@ -1,6 +1,6 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm
+from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm, ProfileEditForm
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
@@ -20,20 +20,24 @@ def register(request):
         if form.is_valid():
             form.save()
  
-            user = auth.authenticate(email=request.POST.get('email'),
+            user = auth.authenticate(username=request.POST.get('username'),
+                                     email=request.POST.get('email'),
                                      password=request.POST.get('password1'))
  
             if user:
+                auth.login(request, user)
                 messages.success(request, "You have successfully registered")
-                return redirect(reverse('profile'))
+                return redirect(reverse('edit_profile'))
  
             else:
                 messages.error(request, "unable to log you in at this time!")
+        else: 
+            messages.error(request, "Error something was entered incorrectly")
  
     else:
         form = UserRegistrationForm()
  
-    args = {'form': form}
+    args = {"active": "register", "form": form}
     args.update(csrf(request))
  
     return render(request, 'register.html', args)
@@ -48,17 +52,20 @@ def profile(request):
 @login_required(login_url='/login/')
 def edit_profile(request):
     if request.method == 'POST':
-        edit_form = UserEditForm(request.POST)
+        UEform = UserEditForm(request.POST)
+        PEform = ProfileEditForm(request.POST)
 
-        if edit_form.is_valid():
-            edit_form.save()
+        if UEform.is_valid() and PEform.is_valid():
+            UEform.save()
+            PEform.save()
             messages.success(request, "Profile page updated successfully!")
             return redirect('profile')
         else: 
             messages.error(request, "Oops, there was an error - Please try again")
     else:
-        edit_form = UserEditForm()
-    return render(request, 'editprofile.html', {'edit_form': edit_form})
+        UEform = UserEditForm()
+        PEform = ProfileEditForm()
+    return render(request, 'editprofile.html', {'UEform': UEform, 'PEform': PEform})
 
 
 def login(request):

@@ -33,7 +33,8 @@ SITE_ID = 1
 LOGIN_URL = '/login/'
 
 # Set the User Model and backend authenticator
-AUTH_USER_MODEL = 'accounts.User'
+# Removed AUTH_USER_MODEL = 'accounts.User'  -  As this conflicts with the model [class 'Profile']
+
 AUTHENTICATION_BACKENDS = ('django.contrib.auth.backends.ModelBackend',
                            'accounts.backends.EmailAuth',
 )
