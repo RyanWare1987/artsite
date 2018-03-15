@@ -23,6 +23,8 @@ def register(request):
             user = auth.authenticate(username=request.POST.get('username'),
                                      email=request.POST.get('email'),
                                      password=request.POST.get('password1'))
+                                     
+                                     
  
             if user:
                 auth.login(request, user)
