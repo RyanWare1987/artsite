@@ -30,16 +30,16 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-    def save(self, commit=True):
-        instance = super(UserRegistrationForm, self).save(commit=False)
+    #def save(self, commit=True):
+       #instance = super(UserRegistrationForm, self).save(commit=False)
 
         # automatically set to email address to create a unique identifier
-        instance.username = instance.email
+        #instance.username = instance.email
 
-        if commit:
-            instance.save()
+        #if commit:
+           # instance.save()
 
-        return instance
+        #return instance
 
 
 class UserLoginForm(forms.Form):
@@ -48,12 +48,14 @@ class UserLoginForm(forms.Form):
 
 
 class UserEditForm(forms.ModelForm):
+    ### Currently not needed if just going for profile edit form - can have all the junk in there
     # Edit user details - this is for the User model, which contains
     # sensitive info such as email, username, password etc
     class Meta:
         model = User
         fields = (
             'email',
+            'username',
         )
 
 class ProfileEditForm(forms.ModelForm):
