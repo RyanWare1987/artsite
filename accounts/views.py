@@ -8,7 +8,7 @@ from django.conf import settings
 import datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from models import User, Profile
+from .models import User, Profile
 import json
 
 
@@ -53,6 +53,7 @@ def profile(request):
 
 @login_required(login_url='/login/')
 def edit_profile(request):
+    # This looks for the current user's Profile model and sets it to user_profile
     try: 
         user_profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
@@ -62,6 +63,8 @@ def edit_profile(request):
         pe_form = ProfileEditForm(request.POST, instance=user_profile)
 
         if pe_form.is_valid():
+            # We do not want to commit the save right away. 
+            # Instead we match the user_id of the user to the profile.
             profile = pe_form.save(commit=False)
             profile.user = request.user
             profile.save()
