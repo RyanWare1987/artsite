@@ -64,6 +64,13 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
-            'car',
-            'colour',
+            'date_of_birth',
+            'fav_artist',
+            'occupation',
+            'medium',
+            'website',
+            'about_me',
+            'facebook_url',
+            'twitter_url',
+            'instagram_url'
         )

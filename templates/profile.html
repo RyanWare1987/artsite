@@ -8,7 +8,16 @@
             <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
     </div>
 
-    <p>Your car is a {{ user.car }}</p>
-    <p>Placeholder text</p> 
-    <p>Placeholder text</p>
+    <p>Date of Birth: {{ user.profile.date_of_birth }}</p>
+    <p>Occupation: {{ user.profile.occupation }}</p> 
+    <p>My Favourite Artist: {{ user.profile.fav_artist }}</p>
+    <p>My Preferred Medium: {{ user.profile.medium }}</p>
+    <p onclick="location.href='{{ user.profile.website }}'">My Website: {{ user.profile.website }}</p>
+    <p>About Myself: {{ user.profile.about_me }}</p>
+
+    <div>
+        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.facebook_url }}'">Facebook</button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.twitter_url }}'">Twitter</button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.instagram_url }}'">Instagram</button>
+    </div>
 {% endblock %}

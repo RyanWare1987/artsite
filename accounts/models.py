@@ -31,9 +31,17 @@ class Profile(models.Model):
     # sensitive info such as email and password go.
 
     user = models.OneToOneField(User)
-    # some test fields below to check if they work
-    car = models.CharField(max_length=50, default='')
-    colour = models.CharField(max_length=50, default='')
+    # Here we create our custom fields that are available to each user in their profile
+    date_of_birth = models.DateField(blank=True, null=True)
+    website = models.URLField(max_length=100, default='')
+    fav_artist = models.CharField(max_length=100, default='')
+    medium = models.CharField(max_length=80, default='')
+    occupation = models.CharField(max_length=50, default='')
+    about_me = models.CharField(max_length=500, default='')
+    facebook_url = models.URLField(max_length=100, default='')
+    twitter_url = models.URLField(max_length=100, default='')
+    instagram_url = models.URLField(max_length=100, default='')
+
 
     def __unicode__(self):
         return self.user.username
