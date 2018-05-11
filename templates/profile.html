@@ -2,10 +2,12 @@
 {% block content %}
     <h2>Success!</h2>
     <p>You are logged in as {{ user.email }} </p>
+    <p>Welcome to your Profile page, {{ user.profile.name }} </p>
     
     <h2>To edit your profile:</h2>
     <div>
             <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
+            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'image_form_upload' %}'">Upload Image</button>
     </div>
 
     <p>Date of Birth: {{ user.profile.date_of_birth }}</p>

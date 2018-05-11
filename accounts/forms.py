@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from accounts.models import Profile
+from accounts.models import Profile, Image
 from django.core.exceptions import ValidationError
 
 
@@ -64,6 +64,7 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
+            'name',
             'date_of_birth',
             'fav_artist',
             'occupation',
@@ -73,4 +74,12 @@ class ProfileEditForm(forms.ModelForm):
             'facebook_url',
             'twitter_url',
             'instagram_url'
+        )
+
+class ImageForm(forms.ModelForm):
+    class Meta: 
+        model = Image
+        fields = (
+            'description',
+            'image'
         )

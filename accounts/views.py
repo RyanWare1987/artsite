@@ -1,7 +1,8 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm, ProfileEditForm
+from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm, ProfileEditForm, ImageForm
 from django.core.urlresolvers import reverse
+from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
 from django.template.context_processors import csrf
 from django.conf import settings
@@ -103,3 +104,29 @@ def logout(request):
     auth.logout(request)
     messages.success(request, 'You have successfully logged out')
     return render(request, 'index.html')
+
+
+## Our Image upload request
+##def image_upload(request):
+ ##   if request.method == 'POST' and request.FILES['myimage']:
+   ##     myimage = request.FILES['myimage']
+   ##     fs = FileSystemStorage()
+   ##     filename = fs.save(myimage.name, myimage)
+   ##     uploaded_image_url = fs.url(filename)
+   ##     return render(request, 'core/image_upload.html', {
+   ##         'uploaded_image_url': uploaded_image_url
+   ##     })
+ ##   return render(request, 'core/image_upload.html')
+
+ ##Better Image Upload View
+def image_form_upload(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = ImageForm()
+    return render(request, 'image_form_upload.html', {
+        'form': form
+    })

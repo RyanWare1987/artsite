@@ -32,6 +32,8 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User)
     # Here we create our custom fields that are available to each user in their profile
+    name = models.CharField(max_length=80, default='')
+    profile_pic = models.ImageField
     date_of_birth = models.DateField(blank=True, null=True)
     website = models.URLField(max_length=100, default='')
     fav_artist = models.CharField(max_length=100, default='')
@@ -45,6 +47,12 @@ class Profile(models.Model):
 
     def __unicode__(self):
         return self.user.username
+
+
+class Image(models.Model):
+    description = models.CharField(max_length=300, default='')
+    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
   
     
 
