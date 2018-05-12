@@ -14,7 +14,7 @@
     <p>Occupation: {{ user.profile.occupation }}</p> 
     <p>My Favourite Artist: {{ user.profile.fav_artist }}</p>
     <p>My Preferred Medium: {{ user.profile.medium }}</p>
-    <p onclick="location.href='{{ user.profile.website }}'">My Website: {{ user.profile.website }}</p>
+    <p onclick="location.href='{{ user.profile.website }}'">My Website: {{ user.profile.website|urlize }}</p>
     <p>About Myself: {{ user.profile.about_me }}</p>
 
     <div>
