@@ -4,9 +4,10 @@ from __future__ import unicode_literals
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
+from django.contrib.auth.models import User
 
 
-class Post(models.Model):
+class Image(models.Model):
     # need to link author to the registered user in the table
     author = models.ForeignKey(User, related_name='blog_posts') #check related name
     title = models.CharField(max_length=200)
@@ -23,3 +24,8 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# Think about a image_height and image_width field on this model
+# How can we have control when sizes of pictures could be Portrait or Landscape etc
+# Perhaps incorporate a max_iamge_height etc?

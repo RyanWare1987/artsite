@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% load bootstrap_tags %}
+
+    <h1>Add An Image to your Gallery</h1>
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+
+        <button type="submit" class=" btn btn- btn-info">Upload</button>
+    </form>
+{% endblock %}
+
+<!-- Very basic - needs adding to

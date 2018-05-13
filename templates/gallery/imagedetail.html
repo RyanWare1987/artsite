@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div>
+        <div>
+            {{ image.published_date }}
+        </div>
+        <h3><a href="">{{ image.title }}</a></h3>
+
+        {% if image.image %}
+            <img src="/media/{{ image.image }}">
+        {% endif %}
+
+        <p>{{ image.content|linebreaks }}</p>
+
+        <p>
+            <button class="btn btn-default" onclick="location.href='/gallery'">Back to Gallery</button>
+            {{ image.published_date }} | Views <strong>{{ image.views }}</strong> | Tag <strong>{{ image.tag }}</strong>
+        </p>
+
+        {% load disqus_tags %}
+        {% set_disqus_title image.title %}
+        {% disqus_show_comments %}
+
+    </div>
+{% endblock content %}
+
+<!--This needs work as just from blog right now 
