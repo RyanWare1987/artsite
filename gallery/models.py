@@ -29,3 +29,5 @@ class Image(models.Model):
 # Think about a image_height and image_width field on this model
 # How can we have control when sizes of pictures could be Portrait or Landscape etc
 # Perhaps incorporate a max_iamge_height etc?
+
+## Move Profile into the gallery.
