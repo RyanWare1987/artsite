@@ -30,4 +30,4 @@ class Image(models.Model):
 # How can we have control when sizes of pictures could be Portrait or Landscape etc
 # Perhaps incorporate a max_iamge_height etc?
 
-## Move Profile into the gallery.
+## Move Profile into the gallery. From accounts
