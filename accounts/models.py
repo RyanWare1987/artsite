@@ -25,34 +25,10 @@ class AccountUserManager(UserManager):
  
         return user
  
-class Profile(models.Model):
-    # This model will hold the basic user information. The user's
-    # profile will be customizable at some stage. This is not where
-    # sensitive info such as email and password go.
-
-    user = models.OneToOneField(User)
-    # Here we create our custom fields that are available to each user in their profile
-    name = models.CharField(max_length=80, default='')
-    profile_pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True) # Model field reference
-    date_of_birth = models.DateField(blank=True, null=True)
-    website = models.URLField(max_length=100, default='')
-    fav_artist = models.CharField(max_length=100, default='')
-    medium = models.CharField(max_length=80, default='')
-    occupation = models.CharField(max_length=50, default='')
-    about_me = models.CharField(max_length=500, default='')
-    facebook_url = models.URLField(max_length=100, default='')
-    twitter_url = models.URLField(max_length=100, default='')
-    instagram_url = models.URLField(max_length=100, default='')
-
-    # Use Admin to set a profile pic for users
-    # Allow on profile html page for user to show / select a pic from their uploads.
 
 
-    def __unicode__(self):
-        return self.user.username
 
-
-class Image(models.Model):
+class Image(models.Model): # Do we need this to go away?
     description = models.CharField(max_length=300, default='')
     image = models.ImageField(upload_to='images/%Y/%m/%d/') # This path would go to S3 - check notepad++
     uploaded_at = models.DateTimeField(auto_now_add=True)

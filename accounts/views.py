@@ -1,6 +1,6 @@
 from django.contrib import messages, auth
 from django.contrib.auth.decorators import login_required
-from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm, ProfileEditForm, ImageForm
+from accounts.forms import UserRegistrationForm, UserLoginForm, UserEditForm, ImageForm
 from django.core.urlresolvers import reverse
 from django.core.files.storage import FileSystemStorage
 from django.shortcuts import render, redirect
@@ -9,7 +9,8 @@ from django.conf import settings
 import datetime
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-from .models import User, Profile
+from .models import User
+from gallery.models import Profile
 import json
 
 
@@ -52,31 +53,6 @@ def profile(request):
     return render(request, 'profile.html')
 
 
-@login_required(login_url='/login/')
-def edit_profile(request):
-    # This looks for the current user's Profile model and sets it to user_profile
-    try: 
-        user_profile = Profile.objects.get(user=request.user)
-    except Profile.DoesNotExist:
-        user_profile = None
-
-    if request.method == 'POST':
-        pe_form = ProfileEditForm(request.POST, instance=user_profile)
-
-        if pe_form.is_valid():
-            # We do not want to commit the save right away. 
-            # Instead we match the user_id of the user to the profile.
-            profile = pe_form.save(commit=False)
-            profile.user = request.user
-            profile.save()
-            messages.success(request, "Profile page updated successfully!")
-            return redirect('profile')
-        else: 
-            messages.error(request, "Oops, there was an error - Please try again")
-    else:
-        pe_form = ProfileEditForm(instance=user_profile)
-    return render(request, 'edit_profile.html', {'PEform': pe_form})
-
 
 def login(request):
     if request.method == 'POST':
@@ -106,19 +82,9 @@ def logout(request):
     return render(request, 'index.html')
 
 
-## Our Image upload request
-##def image_upload(request):
- ##   if request.method == 'POST' and request.FILES['myimage']:
-   ##     myimage = request.FILES['myimage']
-   ##     fs = FileSystemStorage()
-   ##     filename = fs.save(myimage.name, myimage)
-   ##     uploaded_image_url = fs.url(filename)
-   ##     return render(request, 'core/image_upload.html', {
-   ##         'uploaded_image_url': uploaded_image_url
-   ##     })
- ##   return render(request, 'core/image_upload.html')
 
- ##Better Image Upload View
+
+ ##Better Image Upload View  - wont work as profile has moved apps
 def image_form_upload(request):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)

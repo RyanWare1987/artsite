@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'disqus',
     'home',
     'accounts',
+    'gallery',
 ]
 
 MIDDLEWARE = [

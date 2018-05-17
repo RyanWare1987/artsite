@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from home import views
-from accounts.views import login, logout, register, profile, edit_profile, image_form_upload
+from accounts.views import login, logout, register, profile, image_form_upload
 from django.conf import settings 
+from gallery.views import edit_profile #gallery
 
 
 urlpatterns = [
@@ -27,6 +28,7 @@ urlpatterns = [
     url(r'^logout/$', logout, name='logout'),
     url(r'^register/$', register, name='register'),
     url(r'^profile/$', profile, name='profile'),
+    #url(r'^gallery/$', gallery, name='gallery'),
     url(r'^edit_profile/$', edit_profile, name='edit_profile'),
     url(r'^image_form_upload/$', image_form_upload, name='image_form_upload'),
 

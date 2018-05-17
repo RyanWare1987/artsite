@@ -1,5 +1,5 @@
 from django import forms
-from .models import Image
+from .models import Image, Profile
 
 
 class ImagePostForm(forms.ModelForm):
@@ -10,4 +10,22 @@ class ImagePostForm(forms.ModelForm):
             'description',
             'tags',
             'image'
+        )
+
+class ProfileEditForm(forms.ModelForm):
+    # Edit profile details - this is for the additional Profile data
+    # Which does not involve sensitive information like emails and pw
+    class Meta:
+        model = Profile
+        fields = (
+            'name',
+            'date_of_birth',
+            'fav_artist',
+            'occupation',
+            'medium',
+            'website',
+            'about_me',
+            'facebook_url',
+            'twitter_url',
+            'instagram_url'
         )
