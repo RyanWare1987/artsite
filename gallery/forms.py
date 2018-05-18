@@ -1,5 +1,14 @@
 from django import forms
-from .models import Image, Profile
+from .models import Image, Profile, Portfolio
+
+class PortfolioForm(forms.ModelForm):
+    class Meta:
+        model = Portfolio
+        fields = (
+            'title',
+            'description',
+            'tags'
+        )
 
 
 class ImagePostForm(forms.ModelForm):

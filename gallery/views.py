@@ -1,14 +1,31 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
+from django.http import HttpRequest
+from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
-from .models import Image, Profile
+from django.views.generic import DetailView
+from .models import Image, Profile, Portfolio
 from .forms import ImagePostForm, ProfileEditForm
-from django.shortcuts import redirect
 
+
+# The Gallery which contains the Images for each user
+def gallery(request):
+    list = Portfolio.objects.filter(is_visible=True).order_by('-created')
+    paginator = Paginator(list, 6)
+
+    page = request.GET.get('page')
+    try: 
+        portfolios = paginator.page('page')  #portfolios correctly referenced from models?
+    except PageNotAnInteger:
+        portfolios = paginator.page(1) #Loads first page if target is not an int
+    except EmptyPage:
+        portfolios = paginator.page(paginator.num_pages) #Loads last page if breached range
+
+    return render(request, 'gallery.html', )
 
 # List of images, orders by views or published date. Consider adding more filters, even 'likes'
 def image_list(request):
@@ -68,4 +85,9 @@ def edit_profile(request):
     else:
         pe_form = ProfileEditForm(instance=user_profile)
     return render(request, 'edit_profile.html', {'PEform': pe_form})
+
+
+def handler404(request):
+    assert isinstance(request, HttpRequest)
+    return render(request, 'handler404.html', None, None, 404)
 

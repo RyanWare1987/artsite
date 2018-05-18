@@ -13,6 +13,8 @@ django-debug-toolbar==1.9.1
 django-emoticons==1.2
 djangorestframework==3.6.3
 django-forms-bootstrap==3.1.0
+django-imagekit==4.0.2
+django-material==1.2.5
 django-registration==2.2
 django-tinymce==2.6.0
 enum34==1.1.6
