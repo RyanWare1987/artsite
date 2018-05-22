@@ -30,20 +30,24 @@ class UserRegistrationForm(UserCreationForm):
 
         return password2
 
-    #def save(self, commit=True):
-       #instance = super(UserRegistrationForm, self).save(commit=False)
+    def __init__(self, *args, **kwargs):
+        super(UserRegistrationForm, self).__init__(*args, **kwargs)
+
+
+    #def save(self, commit=True):                            ---   From we_are_social. messes up. dont know why
+        #instance = super(UserRegistrationForm, self).save(commit=False)
 
         # automatically set to email address to create a unique identifier
         #instance.username = instance.email
 
         #if commit:
-           # instance.save()
+            #instance.save()
 
         #return instance
 
 
 class UserLoginForm(forms.Form):
-    username = forms.CharField()
+    email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
 

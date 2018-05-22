@@ -22,8 +22,7 @@ def register(request):
         if form.is_valid():
             form.save()
  
-            user = auth.authenticate(username=request.POST.get('username'),
-                                     email=request.POST.get('email'),
+            user = auth.authenticate(email=request.POST.get('email'),  #Find a way for it to check against both values
                                      password=request.POST.get('password1'))
                                      
                                      
