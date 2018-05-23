@@ -14,8 +14,9 @@ from .forms import ImagePostForm, ProfileEditForm
 
 # The Gallery which contains the Images for each user
 def gallery(request):
-    list = Portfolio.objects.filter(is_visible=True).order_by('-created')
-    paginator = Paginator(list, 6)
+    #list = Portfolio.objects.filter(is_visible=True).order_by('-created')
+    portfolios = Portfolio.objects.filter(created_date__lte=timezone.now()).order_by('-created')
+    paginator = Paginator(portfolios, 6)
 
     page = request.GET.get('page')
     try: 
@@ -25,7 +26,7 @@ def gallery(request):
     except EmptyPage:
         portfolios = paginator.page(paginator.num_pages) #Loads last page if breached range
 
-    return render(request, 'gallery.html', )
+    return render(request, 'gallery.html', ) # Will use the new gallery page
 
 # List of images, orders by views or published date. Consider adding more filters, even 'likes'
 def image_list(request):
@@ -68,7 +69,7 @@ def edit_profile(request):
         user_profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
         user_profile = None
-
+    #import pdb; pdb.set_trace()
     if request.method == 'POST':
         pe_form = ProfileEditForm(request.POST, instance=user_profile)
 
@@ -89,5 +90,5 @@ def edit_profile(request):
 
 def handler404(request):
     assert isinstance(request, HttpRequest)
-    return render(request, 'handler404.html', None, None, 404)
+    return render(request, 'error404.html', None, None, 404)
 

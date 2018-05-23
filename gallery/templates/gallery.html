@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="{% static 'images/graphic1.png' %}" alt="Artsite Gallery" class="opaque">
+            <div class="caption center-align">
+                <h1>
+                    Placeholder H1 Title<br/>
+                    <small class="light text-lighten-3 hide-on-small-only">Placeholder Text</small>
+                </h1>
+                
+            </div>
+        </li>
+        <li>
+            <img src="{% static 'images/graphic2.png' %}" alt="Artsite Gallery" class="opaque">
+            <div class="caption left-align">
+                <h1>
+                    Another H1 Placehodler<br />
+                    <small class="light text-lighten-3 hide-on-small-only">Guess what, some more text!</small>
+                </h1>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="container">
+    <div class="row">
+        {% for portfolio in portfolios %}
+
+        <div class="col">
+            <div>
+                <div class="image">
+                    <img src="{{ album.thumb.url }}" alt="{{ portfolio.title }}" class="portfolio-card-image" />
+                </div>
+                <div class="content">
+                    <span class="card-title">{{ portfolio.title }}</span>
+                    <p>{{ portfolio.description|truncatechars:120 }}</p>
+                </div>
+                <div>
+                    <a href="{% url 'portfolio' %}">
+                        More Images
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+</div>
+
+<div class="pagination">
+    <span class="links">
+        {% if portfolios.has_previous %}
+        <a href="?page={{ portfolios.previous_page_number }}" class="btn btn-large">Previous</a>
+        {% endif %}
+
+        {% if portfolios.has_next %}
+        <a href="?page={{ portfolios.next_page_number }}" class="btn btn-large">Next</a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
