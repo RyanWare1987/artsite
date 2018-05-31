@@ -18,6 +18,9 @@ class Product(models.Model):
                                         width_field='image_width',
                                         blank=True)
     name = models.CharField(max_length=180, default='')
+    art_type = models.CharField(max_length=30, default='')
+    medium = models.CharField(max_length=30, default='')
+    size = models.CharField(max_length=30, default='')
     description = models.CharField(max_length=300)
     price = models.DecimalField(max_digits=6, decimal_places=2)
 

@@ -1,0 +1,45 @@
+{% extends "artsite/base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+
+    <h1>Art Pieces for Sale</h1>
+
+    <div>
+        {% for product in products %}
+
+        <div class = "container">
+
+            <div class = "product-image">
+                {% load thumbnail %}
+                {% thumbnail product.product_images "200x200" as image %}
+                {% if product.product.images %}
+                    <img src="{{ image.url }}" height="{{ image.height }}"  width="{{ image.width }}">
+                {% else %}
+                    <img src="media/placeholder.png">   <!-- Need to create and add this into the dir-->
+                {% end if %}
+                {% endthumbnail %}
+            </div>
+
+            <div class = "product-details">
+                <h3>{{ product.name }}</h3>
+                <p>{{ product.art_type }}</p>
+                <p>{{ product.medium }}</p>
+                <p>{{ product.size }}</p>
+                <p>{{ product.description }}</p>
+                <h4>{{ product.price }}</h4>
+            </div>
+
+            <div class = "paypal-purchase">
+                <p id="purchase-btn">{{ product.paypal_form.sandbox }}}</p>
+
+            </div>
+
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
