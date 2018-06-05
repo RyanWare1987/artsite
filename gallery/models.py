@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-#import uuid  #only needed for 'slug' not using at this point
+import uuid  #only needed for 'slug' 
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -19,6 +19,7 @@ class Portfolio(models.Model):
     tags = models.CharField(max_length=50, blank=True, null=True)
     created_date = models.DateTimeField(default=timezone.now)
     modified_date = models.DateTimeField(default=timezone.now)
+    slug = models.SlugField(max_length=50, unique=True)
 
     def __unicode__(self):
         return self.title
@@ -40,6 +41,7 @@ class Image(models.Model):
     thumb = ProcessedImageField(upload_to='media', processors=[ResizeToFit(300)], format='PNG', default='')
     width = models.IntegerField(default=0)
     height = models.IntegerField(default=0)
+    slug = models.SlugField(max_length=70, default=uuid.uuid4, editable=False)
 
 
     def publish(self):

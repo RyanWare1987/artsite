@@ -33,16 +33,14 @@
         <div class="col">
             <div>
                 <div class="image">
-                    <img src="{{ album.thumb.url }}" alt="{{ portfolio.title }}" class="portfolio-card-image" />
+                    <img src="{{ portfolio.thumb.url }}" alt="{{ portfolio.title }}" class="portfolio-card-image" />
                 </div>
                 <div class="content">
                     <span class="card-title">{{ portfolio.title }}</span>
                     <p>{{ portfolio.description|truncatechars:120 }}</p>
                 </div>
                 <div>
-                    <a href="{% url 'portfolio' %}">
-                        More Images
-                    </a>
+                    
                 </div>
             </div>
         </div>

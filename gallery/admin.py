@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os
+import uuid
 #import settings (path)?
 from datetime import datetime
 from django.contrib import admin
@@ -13,7 +14,8 @@ from .models import Image, Profile, Portfolio
 @admin.register(Portfolio)
 class PortfolioModelAdmin(admin.ModelAdmin):
     form = PortfolioForm
-    fields = ('author',) # Need to add more in here for them to dispay in admin panel
+    #prepopulated_fields = {'slug': ('title',)}
+    fields = ('author', 'description', 'thumb', 'title', 'slug') #Moved title into pre-pop
     list_display = ('title', 'thumb') #Special field types in here (list change)
     list_filter = ('created_date',)
 
