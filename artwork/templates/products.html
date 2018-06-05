@@ -1,4 +1,4 @@
-{% extends "artsite/base.html" %}
+{% extends "base.html" %}
 {% load staticfiles %}
 
 {% block content %}
@@ -17,8 +17,7 @@
                     <img src="{{ image.url }}" height="{{ image.height }}"  width="{{ image.width }}">
                 {% else %}
                     <img src="media/placeholder.png">     <!-- Need to create and add this into the dir-->
-                {% end if %}
-                {% endthumbnail %}
+                {% endif %}
             </div>
 
             <div class = "product-details">
@@ -31,7 +30,7 @@
             </div>
 
             <div class = "paypal-purchase">
-                <p id="purchase-btn">{{ product.paypal_form.sandbox }}}</p>
+                <p id="purchase-btn">{{ product.paypal_form.sandbox }}</p>
 
             </div>
 
