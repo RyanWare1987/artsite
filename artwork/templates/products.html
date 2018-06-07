@@ -16,7 +16,7 @@
                 {% if product.product.images %}
                     <img src="{{ image.url }}" height="{{ image.height }}"  width="{{ image.width }}">
                 {% else %}
-                    <img src="media/placeholder.png">     <!-- Need to create and add this into the dir-->
+                    <img src="media/praiseit.png">     <!-- Need to create and add this into the dir-->
                 {% endif %}
             </div>
 
@@ -28,9 +28,6 @@
                 <p>{{ product.description }}</p>
                 <h4>{{ product.price }}</h4>
             </div>
-
-            <div class = "paypal-purchase">
-                <p id="purchase-btn">{{ product.paypal_form.sandbox }}</p>
 
             </div>
 
