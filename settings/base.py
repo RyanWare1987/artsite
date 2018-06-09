@@ -26,7 +26,7 @@ SECRET_KEY = '=*ve_n)^i5!0f$@*&t2s^dv-05#xm^cgbs=!e1ut=-h(pc&+u5'
 DEBUG = True
 
 # Url will go into this box below
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
 
 SITE_ID = 1
 
@@ -57,7 +57,12 @@ INSTALLED_APPS = [
     'disqus',
     'home',
     'accounts',
+    'artwork',
     'gallery',
+    'imagekit',
+    'material',
+    'material.admin',
+    'easy_thumbnails'
 ]
 
 MIDDLEWARE = [
@@ -159,3 +164,21 @@ STATICFILES_DIRS = (
 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js", "tinymce", "tinymce.min.js")
 
+#Paypal Settings - move to dev.py when happy working
+
+PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'  # for testing only
+PAYPAL_RECEIVER_EMAIL = 'ryan.ware1987@gmail.co.uk'
+
+SITE_URL = 'http://127.0.0.1:8000'
+ALLOWED_HOSTS.append(u'0.0.0.0',)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+#More Paypal config options that should reside in the staging.py when happy.
+
+#PAYPAL_NOTIFY_URL = os.environ['ARTSITE_HARD_TO_GUESS_URL']
+#PAYPAL_RECEIVER_EMAIL = os.environ['ARTSITE_PAYPAL_RECEIVER_EMAIL']
+
+#SITE_URL = os.environ['ARTSITE_SITE_URL']
+#ALLOWED_HOSTS.append(os.environ['ARTSITE_ALLOWED_HOST'])
