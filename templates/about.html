@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <h1>About the Artist - Ryan Ware</h1>
+
+    <div>
+        <div class = "aboutpicture col-xs-12 col-md-8">
+            <img src="{% static 'images/graphic1.png' %}">
+
+        </div>
+
+        <div class = "aboutme col-xs-12 col-md-4">
+            <ul class = "aboutlist">
+                <li><p>Name: Ryan Ware</p></li>
+                <li><p>Date of Birth: 4th July 1987</p></li>
+                <li><p>Art Education: 
+                    <ul>A-Level Fine Art</ul>
+                    <ul>University Degree Fine Art: Drawing & Painting</ul>
+                </p></li>
+                <li><p>Birthplace: Doncaster, UK</p></li>
+                <li><p>Current City: Nottingham, UK</p></li>
+                <li><p>Mediums: 
+                    <ul>Oils, Acrylics, Pen & Ink, Mixed Media </ul>    
+                </p></li>
+            </ul>
+
+            <p><a href="{# % url 'contact' % #}">Contact Ryan Ware</a></p>
+        </div>
+
+        <div class = "aboutmedesc col-xs-12 col-sm-12">
+            <p>
+                Some tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
+                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
+                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
+                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
+                and tons and tons and tons and tons and tons and tons and tons and tons of text. Placeholder that is.
+            </p>
+
+            <a href="https://www.facebook.com/ryanwareartist/" class="fa fa-facebook" style="font-size:36px"></a>
+            <a href="https://www.instagram.com/ryanware_artist/" class="fa fa-instagram" style="font-size:36px"></a>
+            <a href="https://www.linkedin.com/in/ryan-ware-8a8653153/" class="fa fa-linkedin" style="font-size:36px"></a>
+        </div>
+
+
+    </div>
+
+
+{% endblock %}
