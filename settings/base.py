@@ -175,8 +175,8 @@ ALLOWED_HOSTS.append(u'0.0.0.0',)
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 DEFAULT_FROM_EMAIL = 'testing@example.com'
 EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'RyanWare1987'
-EMAIL_HOST_PASSWORD = 'tyranid616'
+EMAIL_HOST_USER = 'removed'
+EMAIL_HOST_PASSWORD = 'removed'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 #Sendgrid needs testing once deployed that emails actually land where they are pointed to
