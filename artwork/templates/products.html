@@ -10,14 +10,19 @@
 
         <div class = "container">
 
-            <div class = "product-image">
+            <!--<div class = "product-image">
                 {% load thumbnail %}
                 {% thumbnail product.product_images "200x200" as image %}
                 {% if product.product.images %}
                     <img src="{{ image.url }}" height="{{ image.height }}"  width="{{ image.width }}">
                 {% else %}
-                    <img src="media/praiseit.png">     <!-- Need to create and add this into the dir-->
+                    <img src="{{ product.product_images }}">     
                 {% endif %}
+            </div>-->
+
+            <div>
+                <img src="{{ product.product_images }}"> 
+
             </div>
 
             <div class = "product-details">
@@ -27,6 +32,7 @@
                 <p>{{ product.size }}</p>
                 <p>{{ product.description }}</p>
                 <h4>{{ product.price }}</h4>
+                <button class="btn btn-default" onclick="location.href ={{ product.id }}">Read More</button>&nbsp;
             </div>
 
             </div>

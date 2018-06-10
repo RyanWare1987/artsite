@@ -13,7 +13,7 @@ class Product(models.Model):
     image_width = 400
     image_height = 400
 
-    product_images = models.ImageField(upload_to = 'media/products/%d/%m/%y',
+    product_images = models.ImageField(upload_to = 'media',   #Current local path does not work, try when up to S3
                                         height_field='image_height',
                                         width_field='image_width',
                                         blank=True)
@@ -23,6 +23,7 @@ class Product(models.Model):
     size = models.CharField(max_length=30, default='')
     description = models.CharField(max_length=300)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    views = models.IntegerField(default=0)
 
     @property #paypal form here
     def paypal_form(self):
