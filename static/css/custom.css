@@ -14,7 +14,8 @@ p {
 }
 /* Add a hover effect */
 .fa:hover {
-    opacity: 0.7;
+    opacity: 0.9;
+    color: #cccccc;
 }
 
 /* Set a specific color for each brand */
@@ -31,6 +32,26 @@ p {
 /* LinkedIn */
 .fa-linkedin {
     background: #4d94ff;
+    color: white;
+}
+/* GitHub */
+.fa-github {
+    background: #333333;
+    color: white;
+}
+/* Twitter */
+.fa-twitter {
+    background: #33adff;
+    color: white;
+}
+/* Youtube */
+.fa-youtube {
+    background: #ff0000;
+    color: white;
+}
+/* Pintrest */
+.fa-pinterest {
+    background: #b30000;
     color: white;
 }
 

@@ -65,14 +65,17 @@ class Profile(models.Model):
     name = models.CharField(max_length=80, default='')
     profile_pic = models.ForeignKey(Image, on_delete=models.SET_NULL, null=True) # Model field reference
     date_of_birth = models.DateField(blank=True, null=True)
-    website = models.URLField(max_length=100, default='')
-    fav_artist = models.CharField(max_length=100, default='')
-    medium = models.CharField(max_length=80, default='')
-    occupation = models.CharField(max_length=50, default='')
-    about_me = models.CharField(max_length=500, default='')
-    facebook_url = models.URLField(max_length=100, default='')
-    twitter_url = models.URLField(max_length=100, default='')
-    instagram_url = models.URLField(max_length=100, default='')
+    website = models.URLField(max_length=100, blank=True)
+    fav_artist = models.CharField(max_length=100, blank=True)
+    medium = models.CharField(max_length=80, blank=True)
+    occupation = models.CharField(max_length=50, blank=True)
+    about_me = models.CharField(max_length=500, blank=True)
+    facebook_url = models.URLField(max_length=100, blank=True)
+    twitter_url = models.URLField(max_length=100, blank=True)
+    instagram_url = models.URLField(max_length=100, blank=True)
+    linkedin_url = models.URLField(max_length=100, blank=True)
+    youtube_url = models.URLField(max_length=90, blank=True)
+    pintrest_url = models.URLField(max_length=90, blank=True)
 
 
 

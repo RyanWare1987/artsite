@@ -36,5 +36,8 @@ class ProfileEditForm(forms.ModelForm):
             'about_me',
             'facebook_url',
             'twitter_url',
-            'instagram_url'
+            'instagram_url',
+            'linkedin_url',
+            'youtube_url',
+            'pintrest_url'
         )

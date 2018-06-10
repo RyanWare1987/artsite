@@ -20,8 +20,11 @@
     <p>Profile Pic Test placeholder: {{ user.profile.image. }}</p>
 
     <div>
-        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.facebook_url }}'">Facebook</button>
-        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.twitter_url }}'">Twitter</button>
-        <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{{ user.profile.instagram_url }}'">Instagram</button>
+        <a href='{{ user.profile.facebook_url }}'class="fa fa-facebook" style="font-size:36px"></a>
+        <a href='{{ user.profile.twitter_url }}'class="fa fa-twitter" style="font-size:36px"></a>
+        <a href='{{ user.profile.instagram_url }}'class="fa fa-instagram" style="font-size:36px"></a>
+        <a href='{{ user.profile.linkedin_url }}'class="fa fa-linkedin" style="font-size:36px"></a>
+        <a href='{{ user.profile.youtube_url }}'class="fa fa-youtube" style="font-size:36px"></a>
+        <a href='{{ user.profile.pintrest_url }}'class="fa fa-pinterest" style="font-size:36px"></a>
     </div>
 {% endblock %}
