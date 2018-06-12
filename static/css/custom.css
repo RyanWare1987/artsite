@@ -55,3 +55,14 @@ p {
     color: white;
 }
 
+
+/* Products Styling */
+.product-container {
+    display: inline-grid;
+    position: relative;
+    margin: 5px;
+}
+.product-details {
+    text-align: center 
+}
+

@@ -20,11 +20,28 @@
     <p>Profile Pic Test placeholder: {{ user.profile.image. }}</p>
 
     <div>
+        <!--These if statements check if a user has populated these fields with a url-->
+        {% if user.profile.facebook_url %}
         <a href='{{ user.profile.facebook_url }}'class="fa fa-facebook" style="font-size:36px"></a>
+        {% endif %}
+        {% if user.profile.twitter_url %}
         <a href='{{ user.profile.twitter_url }}'class="fa fa-twitter" style="font-size:36px"></a>
+        {% endif %}
+        {% if user.profile.instagram_url %}
         <a href='{{ user.profile.instagram_url }}'class="fa fa-instagram" style="font-size:36px"></a>
+        {% endif %}
+        {% if user.profile.linkedin_url %}
         <a href='{{ user.profile.linkedin_url }}'class="fa fa-linkedin" style="font-size:36px"></a>
+        {% endif %}
+        {% if user.profile.youtube_url %}
         <a href='{{ user.profile.youtube_url }}'class="fa fa-youtube" style="font-size:36px"></a>
+        {% endif %}
+        {% if user.profile.pintrest_url %}
         <a href='{{ user.profile.pintrest_url }}'class="fa fa-pinterest" style="font-size:36px"></a>
+        {% endif %}
+
+        {% if not user.profile.pintrest_url and user.profile.linkedin_url and user.profile.youtube_url and user.profile.facebook_url and user.profile.twitter_url and user.profile.instagram_url %}
+            <!--This purely hides the links if a user has not specified an entry for each field-->
+        {% endif %}
     </div>
 {% endblock %}
