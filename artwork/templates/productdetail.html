@@ -5,20 +5,23 @@
 
     <h2>View Artwork in more detail:</h2>
 
-    <div class="productimage" "col-xs-12" "col-md-8">
-        <img src="{{ product.product_images }}">
+    <div class="product-details-image" "col-xs-12" "col-md-8">
+        <!--<img src="{{ product.product_images }}">  This was the local one, for testing and placeholder, use below;-->
+        <img src="/media/media/visara_the_dreadful.jpg" height="400" width="300">
     </div>
 
-    <div class="productdetails" "col-xs-12" "col-md-4">
+    <div class="product-details" "col-xs-12" "col-md-4">
         <h3>{{ product.name }}</h3>
         <p>{{ product.art_type }}</p>
         <p>{{ product.medium }}</p>
         <p>{{ product.size }}</p>
         <p>{{ product.description }}</p>
-        <h4>{{ product.price }}</h4>
+        <p>{{ product.views }}</p>
+        <h4>£{{ product.price }}</h4>
     </div>
     <p>
-        <button class="btn btn-default" onclick="location.href='/products'">Back</button>
+        <button class="btn btn-default" onclick="location.href='/products/products'">Back</button>
+        <!--Purchase button needs to go here - Stripe -->
     </p>
 
 

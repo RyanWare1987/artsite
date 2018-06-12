@@ -7,8 +7,7 @@
 
     <div>
         {% for product in products %}
-
-        <div class = "container">
+        <div class = "product-container">
 
             <!--<div class = "product-image">
                 {% load thumbnail %}
@@ -20,26 +19,20 @@
                 {% endif %}
             </div>-->
 
-            <div>
-                <img src="{{ product.product_images }}"> 
+            <div class = "product-image">
+                <!--<img src="{{ product.product_images }}"> This was the link to the image. For testing we're gonna use;-->
+                <img src="/media/media/visara_the_dreadful.jpg" height="200" width="150">
 
             </div>
 
+            <!--This shows the data for each product. At the bottom there is a link to view each product in more detail-->
             <div class = "product-details">
-                <h3>{{ product.name }}</h3>
-                <p>{{ product.art_type }}</p>
-                <p>{{ product.medium }}</p>
-                <p>{{ product.size }}</p>
-                <p>{{ product.description }}</p>
-                <h4>{{ product.price }}</h4>
-                <button class="btn btn-default" onclick="location.href ={{ product.id }}">Read More</button>&nbsp;
+                <h5>{{ product.name }}</h5>
+                <h6>£{{ product.price }}</h6>
+                <button class="btn btn-default" onclick="location.href ={{ product.id }}">See More</button>&nbsp;
             </div>
-
-            </div>
-
-
+    
         </div>
-
         {% endfor %}
 
     </div>
