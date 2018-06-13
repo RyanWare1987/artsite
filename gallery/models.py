@@ -78,6 +78,5 @@ class Profile(models.Model):
     pintrest_url = models.URLField(max_length=90, blank=True)
 
 
-
     def __unicode__(self):
         return self.user.username

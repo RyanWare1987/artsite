@@ -24,6 +24,7 @@ class ImagePostForm(forms.ModelForm):
 class ProfileEditForm(forms.ModelForm):
     # Edit profile details - this is for the additional Profile data
     # Which does not involve sensitive information like emails and pw
+
     class Meta:
         model = Profile
         fields = (

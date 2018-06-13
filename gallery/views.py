@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
+from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger 
 from django.http import HttpRequest
@@ -10,6 +11,10 @@ from django.utils import timezone
 from django.views.generic import DetailView
 from .models import Image, Profile, Portfolio
 from .forms import ImagePostForm, ProfileEditForm
+import datetime
+import stripe
+
+stripe.api_key = settings.STRIPE_SECRET
 
 
 # The Gallery which contains the Images for each user
@@ -82,7 +87,7 @@ def edit_profile(request):
             messages.success(request, "Profile page updated successfully!")
             return redirect('profile')
         else: 
-            messages.error(request, "Oops, there was an error - Please try again")
+            messages.error(request, "There was an error - Please review and try again")
     else:
         pe_form = ProfileEditForm(instance=user_profile)
     return render(request, 'edit_profile.html', {'PEform': pe_form})
