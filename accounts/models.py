@@ -24,6 +24,13 @@ class AccountUserManager(UserManager):
         user.save(using=self._db)
  
         return user
+
+#class User(User):
+    # Adding custom attributes to our user class
+    # such as stripe payment details
+
+    #stripe_id = models.CharField(max_length=40, default='')
+    #objects = AccountUserManager()
  
 
 
