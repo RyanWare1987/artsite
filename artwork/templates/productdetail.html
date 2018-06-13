@@ -2,6 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
+<div class="product-detail-container">
 
     <h2>View Artwork in more detail:</h2>
 
@@ -21,8 +22,19 @@
     </div>
     <p>
         <button class="btn btn-default" onclick="location.href='/products/products'">Back</button>
-        <!--Purchase button needs to go here - Stripe -->
     </p>
 
+    <form method="post" action="{% url 'add_to_basket' product.id %}">
+        {% csrf_token %}
+        <div class="input-group">
+            <input name='quantity' type="number" min="1" max="99" class="form-control" placeholder="Quantity">
+            <span class="input-group-btn">
+                <button class="btn btn-success" type="submit">Add</button>
+            </span>
+        </div>
+    </form>
 
+
+
+</div>
 {% endblock %}

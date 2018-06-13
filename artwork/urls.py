@@ -1,7 +1,7 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 from artsite import views
-from .views import productsall, productdetail
+from .views import productsall, productdetail, checkout
 from django.conf import settings 
 
 
@@ -12,6 +12,7 @@ urlpatterns = [
     #url(r'^image_form_upload/$', image_form_upload, name='image_form_upload'),
     url(r'^products/(?P<id>\d+)/$', productdetail),
     url(r'^products/$', productsall, name='products'),
+    url(r'^$', checkout, name='checkout'),
     #url(r'^productdetail/$', productdetail, name='productdetail'),
 
 
