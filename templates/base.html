@@ -8,6 +8,7 @@
     <meta name="site" content="">
     <meta name="author" content="">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <!--<link rel="stylesheet" href="https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/css/custom.css">-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -24,7 +25,6 @@
                 <li><a href="{% url 'products' %}">Products</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
-                    <li><a href="{% url 'gallery' %}">Gallery</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
                     <li><a href="{% url 'register' %}">Register</a></li>

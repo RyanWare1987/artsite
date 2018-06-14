@@ -20,7 +20,7 @@ from home import views
 from .views import about, contact
 from accounts.views import login, logout, register, profile, image_form_upload
 from django.conf import settings 
-from gallery.views import edit_profile, gallery
+from gallery.views import edit_profile
 from artwork.views import productsall, productdetail, checkout
 from basket.views import view_basket, add_to_basket, adjust_basket
 
@@ -34,7 +34,6 @@ urlpatterns = [
     url(r'^logout/$', logout, name='logout'),
     url(r'^register/$', register, name='register'),
     url(r'^profile/$', profile, name='profile'),
-    url(r'^gallery/$', gallery, name='gallery'),   #old gallery
     url(r'^edit_profile/$', edit_profile, name='edit_profile'),
     url(r'^image_form_upload/$', image_form_upload, name='image_form_upload'),
     #url(r'^products/(?P<id>\d+)/$', productdetail),
@@ -47,7 +46,8 @@ urlpatterns = [
 
     url(r'^pages/', include('django.contrib.flatpages.urls')),
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-if settings.DEBUG:
-    urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)) 
+
+#if settings.DEBUG:
+    #urlpatterns.extend(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)) 

@@ -1,25 +1,5 @@
 from django import forms
-from .models import Image, Profile, Portfolio
-
-class PortfolioForm(forms.ModelForm):
-    class Meta:
-        model = Portfolio
-        fields = (
-            'title',
-            'description',
-            'tags'
-        )
-
-
-class ImagePostForm(forms.ModelForm):
-    class Meta:
-        model = Image
-        fields = (
-            'title',
-            'description',
-            'tags',
-            'image'
-        )
+from .models import Profile
 
 class ProfileEditForm(forms.ModelForm):
     # Edit profile details - this is for the additional Profile data
