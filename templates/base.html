@@ -16,31 +16,28 @@
     {% block head_js %}{% endblock %}
 </head>
 <body>
-    <div class="container">
-       <div class="masthead">
-           <ul class="nav nav-pills pull-right">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+       <div class="navbar-header">
+           <a class="navbar-brand">Ryan Ware - Artist</a>
+        </div>
+           <ul class="nav navbar-nav">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
                 <li><a href="{% url 'products' %}">Products</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}">Profile</a></li>
                     <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a href="{% url 'view_basket' %}">Basket</a></li>
                 {% else %}
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
-                <li>
-                    <a href="{% url 'view_basket' %}">
-                        <i class="fa fa-shipping-cart"></i> Basket
-                        {% if product_count > 0 %}
-                        <label class="badge badge-warning">{{ product_count }}</label>
-                        {% endif %}
-                    </a>
-                </li>
            </ul>
-           <h1><span class="fui-settings-16 muted">Our Simple Site</span></h1>
-       </div>
+</nav>
        <hr>
         {% if messages %}
             <div class="alert alert-success">
@@ -58,9 +55,14 @@
            {% endblock %}
        </div>
        <hr>
-       <div class="footer">
-           <p>Footer note here</p>
-       </div>
     </div>
-    </body>
+</body>
+<div class="panel-footer">
+    <div class="col-xs-12 col-sm-8">
+        <p>Built by Ryan Ware - With the help of Code Institute</p>
+    </div>
+    <div class-"col-xs-12 col-sm-4 float-right">
+        <p>Powered by Python Django</p>
+    </div>
+</div>
 </html>

@@ -7,7 +7,7 @@ p {
 .fa {
     padding: 10px;
     font-size: 20px;
-    width: 60px;
+    width: 90px;
     margin: 5px;
     text-align: center;
     text-decoration: none;
@@ -66,3 +66,39 @@ p {
     text-align: center 
 }
 
+
+
+
+#CarouselContainer {
+    width: 80%;
+    margin: auto;
+}
+#myCarousel {
+    margin-top: 50px;
+}
+.carouselh3{
+    color:white;
+    text-shadow: 2px 2px black;
+    font-family: verdana;
+}
+.carouselp {
+    color:lightcyan;
+    text-shadow: 2px 2px black;
+    font-family: verdana;
+}
+
+
+/* Main Page Styling */
+.aboutme {
+    width: 500px;
+    height: auto;
+}
+
+.productdetailimage {
+    width: 450px;
+    height: auto;
+}
+
+#profilecontainer {
+    margin-top: 100px;
+}

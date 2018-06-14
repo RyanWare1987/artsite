@@ -1,25 +1,24 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 {% block content %}
-    <h2>Success!</h2>
-    <p>You are logged in as {{ user.email }} </p>
-    <p>Welcome to your Profile page, {{ user.profile.name }} </p>
-    
-    <h2>To edit your profile:</h2>
-    <div>
-            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
-            <button type="button" class="btn btn-warning btn-sm" onclick="location.href='{% url 'image_form_upload' %}'">Upload Image</button>
+
+<div class="container-fluid" id="profilecontainer">
+
+    <div class="col-xs-12 col-md-12">
+        <h3>Welcome to your Profile page, {{ user.profile.name }} </h3>
+
+        <ul class="list-group">
+            <li class="list-group-item">Date of Birth: {{ user.profile.date_of_birth }}</li>
+            <li class="list-group-item">Occupation: {{ user.profile.occupation }}</li> 
+            <li class="list-group-item">My Favourite Artist: {{ user.profile.fav_artist }}</li>
+            <li class="list-group-item">My Preferred Medium: {{ user.profile.medium }}</li>
+            <li class="list-group-item" onclick="location.href='{{ user.profile.website }}'">My Website: {{ user.profile.website|urlize }}</li>
+            <li class="list-group-item">About Myself: {{ user.profile.about_me }}</li>
+        </ul>
     </div>
 
-    <p>Date of Birth: {{ user.profile.date_of_birth }}</p>
-    <p>Occupation: {{ user.profile.occupation }}</p> 
-    <p>My Favourite Artist: {{ user.profile.fav_artist }}</p>
-    <p>My Preferred Medium: {{ user.profile.medium }}</p>
-    <p onclick="location.href='{{ user.profile.website }}'">My Website: {{ user.profile.website|urlize }}</p>
-    <p>About Myself: {{ user.profile.about_me }}</p>
+    <div class="col-xs-12 col-md-12">    
 
-    <p>Profile Pic Test placeholder: {{ user.profile.image. }}</p>
-
-    <div>
         <!--These if statements check if a user has populated these fields with a url-->
         {% if user.profile.facebook_url %}
         <a href='{{ user.profile.facebook_url }}'class="fa fa-facebook" style="font-size:36px"></a>
@@ -43,5 +42,8 @@
         {% if not user.profile.pintrest_url and user.profile.linkedin_url and user.profile.youtube_url and user.profile.facebook_url and user.profile.twitter_url and user.profile.instagram_url %}
             <!--This purely hides the links if a user has not specified an entry for each field-->
         {% endif %}
+
+        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
     </div>
+</div>
 {% endblock %}

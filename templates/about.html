@@ -2,49 +2,79 @@
 {% load staticfiles %}
 {% block content %}
 
+<div class="container-fluid">
     <h1>About the Artist - Ryan Ware</h1>
 
     <div>
-        <div class = "aboutpicture col-xs-12 col-md-8">
-            <img src="{% static 'images/graphic1.png' %}">
+        <div class = "aboutpicture col-xs-12 col-md-6">
+            <img class="aboutme" src="https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/media/RyanChimera.jpg">
 
         </div>
 
-        <div class = "aboutme col-xs-12 col-md-4">
-            <ul class = "aboutlist">
-                <li><p>Name: Ryan Ware</p></li>
-                <li><p>Date of Birth: 4th July 1987</p></li>
-                <li><p>Art Education: 
-                    <ul>A-Level Fine Art</ul>
-                    <ul>University Degree Fine Art: Drawing & Painting</ul>
-                </p></li>
-                <li><p>Birthplace: Doncaster, UK</p></li>
-                <li><p>Current City: Nottingham, UK</p></li>
-                <li><p>Mediums: 
-                    <ul>Oils, Acrylics, Pen & Ink, Mixed Media </ul>    
-                </p></li>
-            </ul>
-
-            <p><a href="{% url 'contact' %}">Contact Ryan Ware</a></p>
-        </div>
-
-        <div class = "aboutmedesc col-xs-12 col-sm-12">
-            <p>
-                Some tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
-                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
-                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
-                and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons and tons
-                and tons and tons and tons and tons and tons and tons and tons and tons of text. Placeholder that is.
-            </p>
-
-            <a href="https://www.facebook.com/ryanwareartist/" class="fa fa-facebook" style="font-size:36px"></a>
-            <a href="https://www.instagram.com/ryanware_artist/" class="fa fa-instagram" style="font-size:36px"></a>
-            <a href="https://www.linkedin.com/in/ryan-ware-8a8653153/" class="fa fa-linkedin" style="font-size:36px"></a>
-            <a href="https://www.linkedin.com/in/ryan-ware-8a8653153/" class="fa fa-github" style="font-size:36px"></a>
-        </div>
-
+        <div class="panel-group col-xs-12 col-md-6" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+                            Art Education</a>
+                    </h5>
+                </div>
+                <div id="collapse1" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem blaaaaaaahhhh</div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+                            Preferred Mediums & Styles</a>
+                    </h4>
+                </div>
+                <div id="collapse2" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.</div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+                            Influences & Inspiration</a>
+                    </h4>
+                </div>
+                <div id="collapse3" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.</div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+                            About Me</a>
+                    </h4>
+                </div>
+                <div id="collapse4" class="panel-collapse collapse">
+                    <div class="panel-body">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+                    minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat.</div>
+                </div>
+            </div>
 
     </div>
 
+    <div class = "aboutmelinks col-xs-12 col-sm-12">
 
+            <a href="https://www.facebook.com/ryanwareartist/" class="fa fa-facebook" style="font-size:54px"></a>
+            <a href="https://www.instagram.com/ryanware_artist/" class="fa fa-instagram" style="font-size:54px"></a>
+            <a href="https://www.linkedin.com/in/ryan-ware-8a8653153/" class="fa fa-linkedin" style="font-size:54px"></a>
+            <a href="https://www.linkedin.com/in/ryan-ware-8a8653153/" class="fa fa-github" style="font-size:54px"></a>
+    </div>
+
+</div>
 {% endblock %}
