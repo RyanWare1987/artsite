@@ -180,9 +180,9 @@ STATIC_ROOT = 'static'
 MEDIA_URL = STATIC_URL + 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-        )
+#STATICFILES_DIRS = (
+        #os.path.join(BASE_DIR, "static"),
+        #)
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
