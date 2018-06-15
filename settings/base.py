@@ -170,7 +170,7 @@ AWS_S3_CUSTOM_DOMAIN = 's3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstor
 
 #STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
 STATIC_URL = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
-MEDIA_URL = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
+MEDIA_ROOT = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
 #STATIC_URL = '/static/'
 #STATIC_ROOT = 'static'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
