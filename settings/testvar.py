@@ -1,5 +1,5 @@
 import os
 
-KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+KEY = os.environ.get('SECRET_KEY')
 
 print(KEY)

@@ -64,7 +64,7 @@ INSTALLED_APPS = [
     'basket',
     'material.admin',
     'easy_thumbnails',
-    'storages'
+    'django-storages'
 ]
 
 MIDDLEWARE = [
