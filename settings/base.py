@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '=*ve_n)^i5!0f$@*&t2s^dv-05#xm^cgbs=!e1ut=-h(pc&+u5'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -61,8 +61,10 @@ INSTALLED_APPS = [
     'gallery',
     'imagekit',
     'material',
+    'basket',
     'material.admin',
-    'easy_thumbnails'
+    'easy_thumbnails',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -100,22 +102,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'artsite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        #'ENGINE': 'django.db.backends.mysql',
-        #'NAME': 'artpictures',
-        # These are the login details for MySQL:
-        #'USER': '',
-        #'PASSWORD': '',
-    }
-}
-
-
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 
@@ -149,25 +135,9 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, "static"),
-        )
 
 TINYMCE_JS_ROOT = os.path.join(BASE_DIR, "static", "js", "tinymce", "tinymce.min.js")
 
-#Paypal Settings - move to dev.py when happy working
-
-PAYPAL_NOTIFY_URL = 'http://127.0.0.1/a-very-hard-to-guess-url/'  # for testing only
-PAYPAL_RECEIVER_EMAIL = 'ryan.ware1987@gmail.co.uk'
 
 SITE_URL = 'http://127.0.0.1:8000'
 ALLOWED_HOSTS.append(u'0.0.0.0',)
@@ -182,10 +152,42 @@ EMAIL_PORT = 587
 #Sendgrid needs testing once deployed that emails actually land where they are pointed to
 
 
-#More Paypal config options that should reside in the staging.py when happy.
+#Amazon AWS Settings
+AWS_STORAGE_BUCKET_NAME = 'artsite-ryanware-s3bucketstorage'
+AWS_S3_REGION_NAME = 'eu-west-2'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
-#PAYPAL_NOTIFY_URL = os.environ['ARTSITE_HARD_TO_GUESS_URL']
-#PAYPAL_RECEIVER_EMAIL = os.environ['ARTSITE_PAYPAL_RECEIVER_EMAIL']
+#Tell django-storages the domain and use to refer to static files
+AWS_S3_CUSTOM_DOMAIN = '%s.s3amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+#Tell the staticfiles app to use SBoto3 storage when writing the collected static files
+#(when you run 'collectstatic')
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 #SITE_URL = os.environ['ARTSITE_SITE_URL']
 #ALLOWED_HOSTS.append(os.environ['ARTSITE_ALLOWED_HOST'])
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.11/howto/static-files/
+
+#STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+#STATIC_URL = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
+STATIC_URL = '/static/'
+#STATIC_ROOT = 'static'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = STATIC_URL + 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+        )
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+#STATICFILES_FINDERS = (
+#'django.contrib.staticfiles.finders.FileSystemFinder',
+#'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#)

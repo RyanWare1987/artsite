@@ -9,7 +9,6 @@ configparser==3.5.0
 disqus==0.0.4
 django-disqus==0.5
 Django==1.11.7
-django-debug-toolbar==1.9.1
 django-emoticons==1.2
 djangorestframework==3.6.3
 django-forms-bootstrap==3.1.0

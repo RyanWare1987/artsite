@@ -1,18 +1,44 @@
 from base import *
 
-# Debug should probably be set to false here
+DEBUG = False
 
-# Databases including path
+# Database
+# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        #'ENGINE': 'django.db.backends.mysql',
+        #'NAME': 'artpictures',
+        # These are the login details for MySQL:
+        #'USER': '',
+        #'PASSWORD': '',
+    }
+}
 
 
-# Stripe environment variables if any
+#Stripe Environment Variables
+STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.environ.get('STRIPE_SECRET')
 
 
-# paypal environment variables if any
+SITE_URL = 'https://artsite-ryanware.herokuapp.com'
+ALLOWED_HOSTS.append('artsite-ryanware.herokuapp.com')
 
-
-# Hosted site url (Heroku)
 
 # Log DEBUG information to the console
-
-# Databases - Load the ClearDB connectioon details from the env variable
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
