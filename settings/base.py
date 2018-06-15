@@ -159,7 +159,7 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 #Tell django-storages the domain and use to refer to static files
-AWS_S3_CUSTOM_DOMAIN = '%s.s3amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_CUSTOM_DOMAIN = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
 
 
 #SITE_URL = os.environ['ARTSITE_SITE_URL']
