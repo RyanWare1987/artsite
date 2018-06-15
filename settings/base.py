@@ -172,10 +172,10 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 #STATIC_URL = 'https://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
-#STATIC_URL = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
-STATIC_URL = '/static/'
-#STATIC_ROOT = 'static'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/'
+#STATIC_URL = '/static/'
+STATIC_ROOT = 'static'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = STATIC_URL + 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -185,9 +185,9 @@ STATICFILES_DIRS = (
         )
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
-#STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-#STATICFILES_FINDERS = (
-#'django.contrib.staticfiles.finders.FileSystemFinder',
-#'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#)
+STATICFILES_FINDERS = (
+'django.contrib.staticfiles.finders.FileSystemFinder',
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
