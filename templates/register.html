@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<div class="container-fluid" id="body-content">
+
 	<!--This loads the Register Form as Bootstrap-->
     <form role="form" method="post" action="{% url 'register' %}">
 
@@ -14,4 +16,7 @@
             <button type="submit" class="btn btn-primary">Create account</button>
         </div>
     </form>
+
+</div
+>
 {% endblock %}

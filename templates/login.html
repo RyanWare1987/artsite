@@ -2,6 +2,8 @@
 {% load bootstrap_tags %}
 {% block content %}
 
+<div class="container-fluid" id="body-content">
+
 	<!--Loads the Login Form as Bootstrap-->
     <form role="form" method="post" action="{% url 'login' %}">
         <legend>Login</legend>
@@ -11,4 +13,6 @@
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
     </form>
+
+</div>
 {% endblock %}

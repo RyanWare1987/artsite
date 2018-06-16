@@ -9,6 +9,7 @@
 
 
 {% block content %}
+<div class="container-fluid" id="body-content">
     <h2>Edit Profile</h2>
     <p>You are logged in as {{ user.email }} </p>
     <h2>Please edit your details below:</h2>
@@ -22,4 +23,5 @@
             <button type="submit" id="submit_profile_btn" class="btn btn-primary">Save</button>
         </div>
     </form>
+</div>
 {% endblock %}

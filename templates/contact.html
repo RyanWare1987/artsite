@@ -3,14 +3,14 @@
 {% load staticfiles %}
 {% block content %}
 
-
-<!--Contact Form loaded as Bootstrap-->
-<h1>Contact Ryan Ware</h1>
-<form role = "form" action = "" method = "post">
-    {% csrf_token %}
-    {{ form | as_bootstrap }}
-    <button type="submit">Submit</button>
-</form>
-
+<div class="container-fluid" id="body-content">
+	<!--Contact Form loaded as Bootstrap-->
+	<h1>Contact Ryan Ware</h1>
+	<form role = "form" action = "" method = "post">
+    	{% csrf_token %}
+    	{{ form | as_bootstrap }}
+    	<button type="submit">Submit</button>
+	</form>
+</div>
 
 {% endblock %}
