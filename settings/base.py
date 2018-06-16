@@ -175,7 +175,7 @@ MEDIA_ROOT = 'https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorag
 #STATIC_ROOT = 'static'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-#MEDIA_URL = STATIC_URL + 'media/'
+MEDIA_URL = STATIC_URL + 'media/'
 #MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #STATICFILES_DIRS = (
