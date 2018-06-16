@@ -9,7 +9,7 @@
         <h3>{{ product.name }}</h3>
 
         <div class="product-details-image col-xs-12 col-md-6">
-            <img class="productdetailimage" src="('{{ MEDIA_URL }}{{ product.product_images }}')">
+            <img class="productdetailimage" src="{{ MEDIA_URL }}{{ product.product_images }}">
         </div>
 
         <!--We pass in the Product.id in the url, so the fields
