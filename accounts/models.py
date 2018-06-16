@@ -25,21 +25,6 @@ class AccountUserManager(UserManager):
  
         return user
 
-#class User(User):
-    # Adding custom attributes to our user class
-    # such as stripe payment details
 
-    #stripe_id = models.CharField(max_length=40, default='')
-    #objects = AccountUserManager()
- 
-
-
-
-class Image(models.Model): # Do we need this to go away?
-    description = models.CharField(max_length=300, default='')
-    image = models.ImageField(upload_to='images/%Y/%m/%d/') # This path would go to S3 - check notepad++
-    uploaded_at = models.DateTimeField(auto_now_add=True)
-  
-    
 
     

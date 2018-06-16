@@ -6,7 +6,6 @@ from gallery.models import Profile
 
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
-    # This will display a list of users in the admin panel
 
     list_display = [
         'user',
@@ -14,5 +13,3 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Profile, ProfileAdmin)
-
-# Needs revision

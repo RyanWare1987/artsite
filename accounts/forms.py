@@ -1,11 +1,16 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from accounts.models import Image
 from django.core.exceptions import ValidationError
 
 
 class UserRegistrationForm(UserCreationForm):
+    """
+    The Form a user is presented with when signing up
+    for a new account. A user is asked to supply an email 
+    address, username, and password with a confirmation 
+    checker in place.
+    """
     password1 = forms.CharField(
         label='Password',
         widget=forms.PasswordInput
@@ -24,6 +29,10 @@ class UserRegistrationForm(UserCreationForm):
         password1 = self.cleaned_data.get('password1')
         password2 = self.cleaned_data.get('password2')
 
+        """
+        Here we are checking if the input in password1 and
+        password2 match, if they do not we throw an error
+        """
         if password1 and password2 and password1 != password2:
             message = "Passwords do not match"
             raise ValidationError(message)
@@ -34,39 +43,13 @@ class UserRegistrationForm(UserCreationForm):
         super(UserRegistrationForm, self).__init__(*args, **kwargs)
 
 
-    #def save(self, commit=True):                            ---   From we_are_social. messes up. dont know why
-        #instance = super(UserRegistrationForm, self).save(commit=False)
-
-        # automatically set to email address to create a unique identifier
-        #instance.username = instance.email
-
-        #if commit:
-            #instance.save()
-
-        #return instance
-
 
 class UserLoginForm(forms.Form):
+    """
+    Simple login form presented to the user. We
+    only ask for the Email Address linked to the
+    account and a password.
+    """
     email = forms.EmailField()
     password = forms.CharField(widget=forms.PasswordInput)
 
-
-class UserEditForm(forms.ModelForm):
-    ### Currently not needed if just going for profile edit form - can have all the junk in there
-    # Edit user details - this is for the User model, which contains
-    # sensitive info such as email, username, password etc
-    class Meta:
-        model = User
-        fields = (
-            'email',
-            'username',
-        )
-
-
-class ImageForm(forms.ModelForm):
-    class Meta: 
-        model = Image
-        fields = (
-            'description',
-            'image'
-        )
