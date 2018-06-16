@@ -6,12 +6,13 @@
     <h1>Art Pieces for Sale</h1>
 
     <div>
+    <!--Here we are looping over every product in
+    the database, to populate a list of unique products-->
         {% for product in products %}
         <div class = "product-container">
 
             <div class = "product-image">
-                <!--<img src="('{{ MEDIA_URL }}{{ product.product_images }}')"> This was the link to the image. For testing we're gonna use;-->
-                <img src="https://s3.eu-west-2.amazonaws.com/artsite-ryanware-s3bucketstorage/media/visara_the_dreadful.jpg" height="200" width="150">
+                <img src="('{{ MEDIA_URL }}{{ product.product_images }}')" height="200" width="150">
 
             </div>
 

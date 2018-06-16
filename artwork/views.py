@@ -13,22 +13,43 @@ import stripe
 stripe.api_key = settings.STRIPE_SECRET
 
 def productsall(request):
+    """
+    This view will list all products
+    which are currently stored within 
+    the database
+    """
     products = Product.objects.all()
     return render(request, "products.html", {"products": products})
 
-#We may need a paginator for this. Populate before testing
 
 
 def productdetail(request, id):
+    """
+    This view is responsible for taking the user
+    to a page which shows more information about
+    the selected product. We pass in the Product ID
+    to determin what product data is called and 
+    passed into productdetail.html
+    - Product Views will add 1 to the count or views
+    """
     product = Product.objects.all()
     product = get_object_or_404(Product, pk=id)
-    product.views += 1 #This adds 1 to the number of views this item has had
+    product.views += 1 
     product.save()
     return render(request, "productdetail.html", {"product": product})
 
 
 @login_required()
+"""
+We would only like logged in users to proceed
+to the checkout. Any uers not logged in
+will be propmted to login via the login page
+"""
 def checkout(request):
+    """
+    This view will combine both OrderForm & MakePaymentForm
+    forms that are created in this application.
+    """
     if request.method=="POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -38,6 +59,12 @@ def checkout(request):
             order.date = timezone.now()
             order.save()
 
+            """
+            If the above two arguments are true, 
+            we request the basket session to be called 
+            upon, so that we can setup the process to 
+            charge the customer
+            """
             basket = request.session.get('basket', {})
             total = 0
             for id, quantity in basket.items():
@@ -51,6 +78,12 @@ def checkout(request):
                 purchase_product.save()
 
             try:
+                """
+                Tested with the Stripe Test Details, and this 
+                information is what we want to land in our Stripe 
+                Account Inbox, in particular the email of the 
+                registered user.
+                """
                 customer = stripe.Charge.create(
                     amount = int(total * 100),
                     currency = "GBP",

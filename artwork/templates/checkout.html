@@ -2,6 +2,7 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
+<!--Stripe javascript called in here to handle Stripe authentication-->
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -35,6 +36,7 @@
     <p><span class="glyphicon glyphicon-euro" aria-hidden="true"></span>{{ total }}</p>
 </div>
 
+<!--Our payment forms are called here as a user proceeds to pay at the checkout-->
 <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
     <legend>Payment Details</legend>
     <div id="credit-card-errors" style="display:none">

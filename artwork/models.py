@@ -6,13 +6,21 @@ from django.db import models
 from django.conf import settings
 
 
-#These will be the pieces of art on sale. From Canvas to AlterArt Cards
-class Product(models.Model):
 
+class Product(models.Model):
+    """
+    The Product model will contain the path to where images
+    are uploaded to in S3. Currently only the Admin can add these
+    Products to the 'Store' Within this process we define the Product's
+    Price, as well as Product details such as size, description, medium etc
+    Views should default to 0, so we can track popularity of a product
+    art_type should be 'MTG Alter', or 'Canvas' mainly. 
+    In the future there could exist a filter on this.
+    """
     image_width = 400
     image_height = 400
 
-    product_images = models.ImageField(upload_to = 'media',   #Current local path does not work, try when up to S3
+    product_images = models.ImageField(upload_to = 'media', 
                                         height_field='image_height',
                                         width_field='image_width',
                                         blank=True)
@@ -29,7 +37,12 @@ class Product(models.Model):
 
 
 class OrderProduct(models.Model):
-    # A model to handle the details for purchasing a product
+    """
+    One form which the user is met with when heading to the 
+    checkout. All fields are required and contain details of
+    where to send the product and form part of the Stripe
+    authentication check
+    """
 
     full_name = models.CharField(max_length=50, blank=False)
     phone_number = models.CharField(max_length=20, blank=False)
@@ -45,8 +58,10 @@ class OrderProduct(models.Model):
 
 
 class PurchaseProduct(models.Model):
-    # Model which contains Ordering Details, along with Product information
-
+    """
+    PurchaseProduct model links the product selected to the Order, 
+    which is the model above.
+    """
     order = models.ForeignKey(OrderProduct, null=False)
     product = models.ForeignKey(Product, null=False)
     quantity = models.IntegerField(blank=False)

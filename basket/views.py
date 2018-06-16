@@ -4,12 +4,16 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect, reverse
 
 def view_basket(request):
-    """A view that renders the basket contents page"""
+    """
+    A view that renders the basket contents page
+    """
     return render(request, "basket.html")
     
     
 def add_to_basket(request, id):
-    """Add a quantity of the specified product to the basket"""
+    """
+    Add a quantity of the specified product to the basket
+    """
     quantity=int(request.POST.get('quantity'))
     
     basket = request.session.get('basket', {})
@@ -20,7 +24,9 @@ def add_to_basket(request, id):
     
     
 def adjust_basket(request, id):
-    """Adjust the quantity of the specified product to the specified amount"""
+    """
+    Ajust the quantity of the specified product to the specified amount
+    """
     quantity = int(request.POST.get('quantity'))
     basket = request.session.get('basket', {})
     
