@@ -13,12 +13,12 @@ from .forms import ProfileEditForm
 import datetime
 
 
-@login_required(login_url='/login/')
 """
 We only want the option of editing
 a profile available to someone
 who is currently logged in
 """
+@login_required(login_url='/login/')
 def edit_profile(request):
     """
     We request the current user's profile to be edited.

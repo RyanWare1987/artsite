@@ -39,12 +39,13 @@ def productdetail(request, id):
     return render(request, "productdetail.html", {"product": product})
 
 
-@login_required()
+
 """
 We would only like logged in users to proceed
 to the checkout. Any uers not logged in
 will be propmted to login via the login page
 """
+@login_required()
 def checkout(request):
     """
     This view will combine both OrderForm & MakePaymentForm

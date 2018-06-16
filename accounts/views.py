@@ -27,11 +27,11 @@ def register(request):
  
             user = auth.authenticate(email=request.POST.get('email'), 
                                      password=request.POST.get('password1'))
-                                    """
-                                    We are authenticating against a user's
-                                    email entered and password. Scope to add 
-                                    authentication against a username also here
-                                    """
+            """
+            We are authenticating against a user's
+            email entered and password. Scope to add 
+            authentication against a username also here
+            """
                                      
                                      
  
@@ -61,12 +61,12 @@ def register(request):
 
 
 @login_required(login_url='/login/')
-"""
-We want the profile view only available to those
-who have logged in, as the profile view won't know
-who's information to pull forward otherwise
-"""
 def profile(request):
+    """
+    We want the profile view only available to those
+    who have logged in, as the profile view won't know
+    who's information to pull forward otherwise
+    """
     return render(request, 'profile.html')
 
 
