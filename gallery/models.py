@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import uuid  #only needed for 'slug' 
+import uuid 
 from django.db import models
 from django.utils import timezone
 from django.conf import settings
@@ -9,12 +9,19 @@ from django.contrib.auth.models import User
 
 
 class Profile(models.Model):
-    # This model will hold the basic user information. The user's
-    # profile will be customizable at some stage. This is not where
-    # sensitive info such as email and password go.
+    """
+    This model will contain all of the user's information that is 
+    intended to be publically viewable. No sensitive information
+    should be stored here, as the plan going forward is to have this
+    viewable by other users.
+    - name is the only model we require, the rest are optional
+    - We link the Profile model to the User model in a OneToOneField
+    - URLFields are used for inputs that are URL's
+    - CharFields the standard input for regular data fields
+    - DateField used for the user's date of birth
+    """
 
     user = models.OneToOneField(User)
-    # Here we create our custom fields that are available to each user in their profile
     name = models.CharField(max_length=80, default='')
     date_of_birth = models.DateField(blank=True, null=True)
     website = models.URLField(max_length=100, blank=True)

@@ -14,19 +14,30 @@ import datetime
 
 
 @login_required(login_url='/login/')
+"""
+We only want the option of editing
+a profile available to someone
+who is currently logged in
+"""
 def edit_profile(request):
-    # This looks for the current user's Profile model and sets it to user_profile
+    """
+    We request the current user's profile to be edited.
+    But will not proceed if the user has no profile.
+    This however, should be impossible.
+    """
+    
     try: 
         user_profile = Profile.objects.get(user=request.user)
     except Profile.DoesNotExist:
         user_profile = None
-    #import pdb; pdb.set_trace()
     if request.method == 'POST':
         pe_form = ProfileEditForm(request.POST, instance=user_profile)
 
         if pe_form.is_valid():
-            # We do not want to commit the save right away. 
-            # Instead we match the user_id of the user to the profile.
+            """
+            We do not want to commit the save right away. 
+            Instead we match the user_id of the user to the profile.
+            """
             profile = pe_form.save(commit=False)
             profile.user = request.user
             profile.save()
