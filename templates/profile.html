@@ -2,11 +2,13 @@
 {% load staticfiles %}
 {% block content %}
 
+<!--Container for the User's Profile Page-->
 <div class="container-fluid" id="profilecontainer">
 
     <div class="col-xs-12 col-md-12">
         <h3>Welcome to your Profile page, {{ user.profile.name }} </h3>
 
+        <!--We use a list group bootstrap class here to keep all the data nice together-->
         <ul class="list-group">
             <li class="list-group-item">Date of Birth: {{ user.profile.date_of_birth }}</li>
             <li class="list-group-item">Occupation: {{ user.profile.occupation }}</li> 
@@ -43,6 +45,7 @@
             <!--This purely hides the links if a user has not specified an entry for each field-->
         {% endif %}
 
+        <!--Button gives the user the option to edit the data of their profile-->
         <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{% url 'edit_profile' %}'">Edit Profile</button>
     </div>
 </div>

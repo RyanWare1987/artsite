@@ -3,10 +3,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Our Simple Site</title>
+    <title>Ryan Ware - Artist</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="site" content="">
-    <meta name="author" content="">
+    <meta name="site" content="Ryan Ware Artsite">
+    <meta name="author" content="Ryan Ware">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/cerulean/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -15,12 +15,13 @@
     {% block head_js %}{% endblock %}
 </head>
 <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-       <div class="navbar-header">
-           <a class="navbar-brand">Ryan Ware - Artist</a>
-        </div>
-           <ul class="nav navbar-nav">
+    <!--Navbar which will sit at the top of every page providing direction-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand">Ryan Ware - Artist</a>
+            </div>
+            <ul class="nav navbar-nav">
                 <li><a href="{% url 'home' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">About</a></li>
                 <li><a href="{% url 'contact' %}">Contact</a></li>
@@ -35,9 +36,9 @@
                     <li><a href="{% url 'register' %}">Register</a></li>
                     <li><a href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
-           </ul>
-</nav>
-       <hr>
+            </ul>
+    </nav>
+        <hr>
         {% if messages %}
             <div class="alert alert-success">
                 <div class="messages">
@@ -48,14 +49,16 @@
             </div>
         {% endif %}
      
-     
-       <div class="container">
-           {% block content %}
-           {% endblock %}
-       </div>
-       <hr>
-    </div>
+            <!--This container will house the block for each page loaded in the to this base-->
+            <div class="container">
+                {% block content %}
+                {% endblock %}
+            </div>
+            <hr>
+        </div>
 </body>
+
+<!--Panel for the Footer - brief signature-->
 <div class="panel-footer">
     <div class="col-xs-12 col-sm-8">
         <p>Built by Ryan Ware - With the help of Code Institute</p>

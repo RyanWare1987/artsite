@@ -2,30 +2,19 @@
 {% load staticfiles %}
 {% load bootstrap_tags %}
 
-{% block head_js %}
-    <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
-    <script type="text/javascript">
-        //<![CDATA[
-        Stripe.publishableKey = '{{ publishable }}';
-        //]]>
-    </script>
-    <script type="text/javascript" src="{% static 'js/stripe.js' %}"></script>
-{% endblock %}
 
 {% block title %}
     Edit Profile
 {% endblock %}
+
 
 {% block content %}
     <h2>Edit Profile</h2>
     <p>You are logged in as {{ user.email }} </p>
     <h2>Please edit your details below:</h2>
 
+    <!--This will load the profile edit form-->
     <form role="form", method="post", id="profile-edit-form" action="{% url 'edit_profile' %}">
-        <div id ="credit-card-error" style="display: none">
-            <div class="alert-message block-message error" id="stripe-error-message"></div>
-        </div>
-
         <legend>Edit Your Profile</legend>
         {% csrf_token %}
         {{ PEform | as_bootstrap }}
