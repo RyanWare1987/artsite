@@ -4,12 +4,24 @@ from django.template.loader import get_template
 from .forms import ContactForm
 
 def index(request):
+    """
+    Simple handler for the index page
+    """
     return render(request, 'index.html')
 
 def about(request):
+    """
+    Simple handler for the about page
+    """
     return render(request, 'about.html')
 
 def contact(request):
+    """
+    This is the handler for the Contact Us Page, where we us a
+    bootstrap contact form, for a user to enter details and a 
+    comment which will user sendgrid to fire an email over into
+    a specified inbox, with information for which I can reply to.
+    """
     form_class = ContactForm
 
     if request.method == 'POST':
@@ -21,7 +33,10 @@ def contact(request):
             contact_number = request.POST.get('contact_number', '')
             form_content = request.POST.get('content', '')
 
-            #Here we email the profile with the contact info
+            """
+            Here we ensure the correct values are assigned
+            to each form input
+            """
             template = get_template('contact_template.txt')
             context = {
                 'contact_name': contact_name,
@@ -31,6 +46,11 @@ def contact(request):
             }
             content = template.render(context)
 
+            """
+            Here the email is sent to a 
+            designated email address via
+            sendgrid
+            """
             email = EmailMessage(
                 "New contact form submission",
                 content, "Your Website" +'',
