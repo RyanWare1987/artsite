@@ -28,6 +28,47 @@ This application is currently deployed live on Heroku, using a Postgres Database
 The Application can be viewed on Heroku here: https://artsite-ryanware.herokuapp.com/home
 
 
+### Site Breakdown
+
+#### Home Page
+
+This simple landing page features an introductory pre-selection of pictures thanks to the Bootstrap Carousel. The carousel will automatically phase between the pre-selected images but the option for the user to browse through the Carousel remains.
+
+#### About Page
+
+The About Page features from information on myself, with the focus on the Artistic elements, such as Art Education and Art influences. This static page serves to display information a user may be interested in from an artist's perspective and contains social media links if a user is so inclined to add/follow my artist social media profiles to their network.
+This page features a single static image and a Bootstap accordion panel group which contains all of the content provided for each header until one is clicked, thus revealing the content. I chose create this in order to keep content tidier and better presented.
+
+#### Contact Us Page
+
+The Contact Page features a simple submission form which is presented to the user, with the goal being for the user to contact me indirectly, submitting a message which will arrive via email to my inbox, processed and handled by SendGrid. The 'Name' and 'Email Address' are neccessary and therefore mandatory so I know who to reply to, but the 'Phone Number' is optional.
+
+#### Products
+
+These are the artwork I will have on sale as Products on this site. The data for these items exist in Heroku's Postgres DB with linkes to the Media which is stored in Amazon's AWS S3 Bucket. The Products Page populates from this data's location, where we see an Image, and breif detail of each Product. The user can then click into each Product, where a page will display containing more information about the selected product.
+Within this page, a user is able to select an option to 'Add to Basket' and depending on the quantity selected, an amount of that particular product will be added to a user's basket.
+
+Once a User has added a Product to their Basket, you can then navigate to the Basket page, which will show back to a user the contents of the basket (At this time, this feature doesn't display back the required information)
+
+From within the Basket Page, we can then click 'Checkout' which will load two forms for the user, one to enter Payment Address and one to enter Card Details. The fields for the Card Data is handled by Stripe, and not stored in our Database.
+
+- It should be noted that in Order for a User to view Basket, they must be Signed In. This is due to the Purchasing process requiring the user's Email Address in which they signed up with. This is what is sent to Stripe so it is essntial this field is populated and correct. 
+
+#### Register / Sign In
+
+User's of this site are given the opporunity to Register an Account, which will create them a user account. From here, a user can create a more personal profile, or even complete a Purchase from the Products page mentioned above. 
+Currently, the only information required is a Username, Email Address and password which will need verification by entering twice.
+
+Currently, there are not many benefits to a user signing up to this site, but there are plans and features in the future which will make having an account useful for social interaction on this site with other members.
+
+#### Profile Page
+
+A user is able to view their own Profile page, where each field is optional except the 'Name'. As I have mentioned in this ReadMe, there is more scope to incorporate the user's profile page with other social aspects of this site, but they will be future additions and I had to cut some incomplete features which will utilise the user's profile page.
+
+At current, it is still possible however for a User who is Signed In, to view their own profile page. A user may then edit these fields and enter as much or as little as they like, and save the data. A User's Profile is linked to their User Account on a OneToOne scale.
+
+
+
 ### Testing
 
 The majority of testing for this project was completed during development by constructing changes with the virtualenv active and the server running locally via the `python manage.py runserver` command. Manual Testing was used to test links, views, models and how they would link with each other, images, database population, styling, css and content.
