@@ -56,6 +56,16 @@ p {
 }
 
 
+/* 100% of the viewport height, less the height of your header + footer, 101px*/
+#body-content {
+    min-height: calc(100vh - 136px);
+}
+/* 100% of the viewport height, on modified pages that have a margin added */
+#body-content-modified {
+    min-height: calc(100vh - 166px);
+}
+
+
 /* Products Styling */
 .product-container {
     display: inline-grid;
@@ -65,10 +75,14 @@ p {
 .product-details {
     text-align: center 
 }
+.productdetailimage {
+    width: 450px;
+    height: auto;
+}
 
 
 
-
+/* Main Home Page Carousel styling */
 #CarouselContainer {
     width: 80%;
     margin: auto;
@@ -90,15 +104,76 @@ p {
 
 /* Main Page Styling */
 .aboutme {
-    width: 500px;
+    width: 100%;
     height: auto;
+}
+@media only screen and (max-width: 640px) {
+    img.aboutme {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media only screen and (min-width: 992px) {
+    img.aboutme {
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
-.productdetailimage {
-    width: 450px;
-    height: auto;
-}
+
 
 #profilecontainer {
     margin-top: 100px;
+}
+
+
+/* Additional Margins added to containters on selected
+pages due to the content being partially covered by navbar*/
+.register {
+    margin-top: 30px;
+}
+.login {
+    margin-top: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
 }
