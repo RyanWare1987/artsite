@@ -76,8 +76,24 @@ p {
     text-align: center 
 }
 .productdetailimage {
-    width: 450px;
+    width: 100%;
     height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.product-image {
+    width: 200px;
+    height: auto;
+}
+@media only screen and (max-width: 640px) {
+    img.product-image {
+        width: 150px;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 

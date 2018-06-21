@@ -8,14 +8,14 @@
 
         <h3 class="productdetailname">{{ product.name }}</h3>
 
-        <div class="product-details-image col-xs-12 col-md-6">
+        <div class="product-details-image col-xs-12 col-md-6 col-lg-6">
             <img class="productdetailimage" src="{{ MEDIA_URL }}{{ product.product_images }}">
         </div>
 
         <!--We pass in the Product.id in the url, so the fields
         here will be unique to the selected product, and contain
         populated data about the selected product on this page-->
-        <div class="product-details col-xs-12 col-md-6">
+        <div class="product-details col-xs-12 col-md-6 col-lg-6">
             <ul class="list-group">
                 <li class="list-group-item">{{ product.art_type }}</li>
                 <li class="list-group-item">{{ product.medium }}</li>

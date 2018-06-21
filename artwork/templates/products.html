@@ -3,7 +3,7 @@
 
 {% block content %}
 <div class="container-fluid" id="body-content">
-    <h1 class="producttitle">Art Pieces for Sale</h1>
+    <h3 class="producttitle">Art Pieces for Sale</h3>
 
     <div>
     <!--Here we are looping over every product in
@@ -12,7 +12,7 @@
         <div class = "product-container">
 
             <div class = "product-image">
-                <img src="{{ MEDIA_URL }}{{ product.product_images }}" height="200" width="auto">
+                <img src="{{ MEDIA_URL }}{{ product.product_images }}">
 
             </div>
 
