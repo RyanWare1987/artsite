@@ -2,6 +2,10 @@ p {
     color: blue;
 }
 
+body {
+    font-family: verdana;
+}
+
 
 /* Adds styling to the social media buttons */
 .fa {
@@ -12,6 +16,12 @@ p {
     text-align: center;
     text-decoration: none;
 }
+@media only screen and (max-width: 640px) {
+    .fa {
+        width: 52px;
+    }
+}
+
 /* Add a hover effect */
 .fa:hover {
     opacity: 0.9;
@@ -88,7 +98,7 @@ p {
 }
 @media only screen and (max-width: 640px) {
     img.product-image {
-        width: 150px;
+        width: 130px;
         height: auto;
         display: block;
         margin-left: auto;
@@ -103,6 +113,25 @@ p {
     width: 80%;
     margin: auto;
 }
+@media only screen and (max-width: 640px) {
+    #CarouselContainer {
+        width: 100%;
+        margin: auto;
+    }
+    div.carousel-caption {
+        position: relative;
+        left: auto;
+        right: auto;
+    }
+    h3.carouselh3 {
+        color: navy;
+        text-shadow: none;
+    }
+    p.carouselp {
+        color: darkgray;
+        text-shadow: none;
+    }
+}
 #myCarousel {
     margin-top: 50px;
 }
@@ -115,6 +144,13 @@ p {
     color:lightcyan;
     text-shadow: 2px 2px black;
     font-family: verdana;
+}
+.index-text {
+    margin-top: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: navy;
+    text-align: center;
 }
 
 
@@ -162,6 +198,17 @@ pages due to the content being partially covered by navbar*/
 }
 .checkout {
     margin-top: 30px;
+}
+
+/* Footer details */
+.footer-text {
+    color: darkgrey;
+}
+@media only screen and (max-width: 640px) {
+    p.footer-text {
+        font-size: 9px;
+        text-align: center;
+    }
 }
 
 
