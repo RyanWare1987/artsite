@@ -52,6 +52,8 @@ Once a User has added a Product to their Basket, you can then navigate to the Ba
 
 From within the Basket Page, we can then click 'Checkout' which will load two forms for the user, one to enter Payment Address and one to enter Card Details. The fields for the Card Data is handled by Stripe, and not stored in our Database.
 
+The 'Basket' application and 'Checkout' integration with the existing 'Artwork' application has been forked from the work of Neil Mcewan, one of the Code Institute mentors. This was suggested by my own personal Code Institute mentor, Yoni Lavi, after my own implementation was failing and I needed to implement something that had proven functionality with the time I had remaining.
+
 - It should be noted that in Order for a User to view Basket, they must be Signed In. This is due to the Purchasing process requiring the user's Email Address in which they signed up with. This is what is sent to Stripe so it is essntial this field is populated and correct. 
 
 #### Register / Sign In
@@ -78,6 +80,8 @@ During Deployment, Chris Zielinski of Code Institute tested the site's functiona
 
 ## Known Bugs
 At the Time of Deployment, the Basket & Checkout displays do not currently populate properly. This is potentially down to the path, but could be due to other reasons.
+
+There seems to be minimal field checks and charachter limits applied to the PaymentForm which is presented to the user when entering credit card details when purchasing a product.
 
 ## Improvements
 I am currently in the process of improving visuals, such as page layouts, css and bootstrap components. This is purely down to personal preference and to make the site easier on the eye. 
