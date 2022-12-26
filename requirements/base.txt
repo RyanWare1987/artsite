@@ -36,7 +36,7 @@ python-dateutil==2.6.0
 singledispatch==3.4.0.3
 six==1.10.0
 sqlparse==0.2.4
-wheel==0.24.0
+wheel==0.38.1
 django-paypal==0.2.7
 stripe==1.77.2
 requests==2.18.4
